@@ -42,6 +42,6 @@ int execute(stack_t **head, unsigned int line_number, char *code, int number)
 			return (0);
 		}
 	}
-	printf("%d: unknown instruction %s\n", line_number, code);
+	printf("L%d: unknown instruction %s\n", line_number, code);
 	exit(EXIT_FAILURE);
 }

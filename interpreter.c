@@ -56,7 +56,7 @@ int interpreter(char *file)
 				numstr = strtok(NULL, " \t");
 				if (numstr == NULL)
 				{
-					printf("%d: usage: push integer\n", line_number);
+					printf("L%d: usage: push integer\n", line_number);
 					exit(EXIT_FAILURE);
 				}
 				number = atoi(numstr);
