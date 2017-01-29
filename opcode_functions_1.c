@@ -48,7 +48,6 @@ void pall_op(stack_t **head, unsigned int line_number)
  * @line_number: line of access
  *
  * Return: void
- *
  */
 void pint_op(stack_t **head, unsigned int line_number)
 {
@@ -57,8 +56,6 @@ void pint_op(stack_t **head, unsigned int line_number)
 		printf("L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while ((*head)->prev != NULL)
-		(*head) = (*head)->prev;
 	printf("%d\n", (*head)->n);
 }
 /**
@@ -72,16 +69,30 @@ void pint_op(stack_t **head, unsigned int line_number)
  */
 void pop_op(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp;
+	stack_t *current;
 
+<<<<<<< HEAD
 	if (*head == NULL)
+=======
+	if (*head != NULL)
+	{
+		current = *head;
+		*head = (*head)->next;
+		free(current);
+	}
+	else
+>>>>>>> b9364eca801107aada039c16a07317a070c2b30e
 	{
 		printf("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+<<<<<<< HEAD
 	temp = *head;
 	(*head) = (*head)->next;
 	free(temp);
+=======
+
+>>>>>>> b9364eca801107aada039c16a07317a070c2b30e
 }
 /**
  * swap_op - swaps top two elements of doubly linked list
@@ -90,15 +101,18 @@ void pop_op(stack_t **head, unsigned int line_number)
  * @line_number: line of access
  *
  * Return: void
- *
  */
 void swap_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp, *hold, *temp2;
 	int holder, i;
 
+<<<<<<< HEAD
 	temp2 = *head;
 	if (temp2 != NULL)
+=======
+	if (*head != NULL && (*head)->next != NULL)
+>>>>>>> b9364eca801107aada039c16a07317a070c2b30e
 	{
 		i++;
 		temp2 = temp2->next;
