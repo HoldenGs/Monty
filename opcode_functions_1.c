@@ -74,16 +74,13 @@ void pop_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if ((*head) == NULL)
+	if (*head == NULL)
 	{
 		printf("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = *head;
-	while ((*head)->prev != NULL)
-		(*head) = (*head)->prev;
 	(*head) = (*head)->next;
-	(*head)->prev = NULL;
 	free(temp);
 }
 /**
@@ -97,22 +94,23 @@ void pop_op(stack_t **head, unsigned int line_number)
  */
 void swap_op(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp, *hold;
-	int holder;
+	stack_t *temp, *hold, *temp2;
+	int holder, i;
 
-	while ((*head)->prev != NULL)
-		(*head) = (*head)->prev;
-	if ((*head)->prev != NULL || (*head) != NULL)
+	temp2 = *head;
+	if (temp2 != NULL)
 	{
-		temp = *head;
-		hold = temp->next;
-		holder = temp->n;
-		temp->n = hold->n;
-		hold->n = holder;
+		i++;
+		temp2 = temp2->next;
 	}
-	else
+	if (i < 2 || (*head)->next == NULL)
 	{
 		printf("L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	temp = *head;
+	hold = temp->next;
+	holder = temp->n;
+	temp->n = hold->n;
+	hold->n = holder;
 }

@@ -15,8 +15,6 @@ void add_op(stack_t **head, unsigned int line_number)
 	temp = *head;
 	if ((*head) != NULL && (*head)->next != NULL)
 	{
-		while ((*head)->prev != NULL)
-			(*head) = (*head)->prev;
 		(*head) = (*head)->next;
 		(*head)->n = temp->n + (*head)->n;
 		free(temp);
@@ -59,8 +57,6 @@ void sub_op(stack_t **head, unsigned int line_number)
 	temp = *head;
 	if ((*head) != NULL && (*head)->next != NULL)
 	{
-		while ((*head)->prev != NULL)
-			(*head) = (*head)->prev;
 		(*head) = (*head)->next;
 		(*head)->n = (*head)->n - temp->n;
 		free(temp);
@@ -71,9 +67,30 @@ void sub_op(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+ * div_op - divide second top element by top element
+ *
+ * @head: the list
+ * @line_number: line of acces
+ *
+ * Return: void
+ */
 void div_op(stack_t **head, unsigned int line_number)
 {
-	(void) head;
-	(void) line_number;
+	stack_t *temp;
+	int hold;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		printf("L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*head)->n == 0)
+	{
+		printf("L%d: division by zero\n", temp->n);
+		exit(EXIT_FAILURE);
+	}
+	temp = *head;
+	temp->next->n /= temp->n;
+	pop_op(head, line_number);
 }
