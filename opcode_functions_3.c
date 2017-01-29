@@ -52,8 +52,25 @@ void mod_op(stack_t **head, unsigned int line_number)
 
 void pchar_op(stack_t **head, unsigned int line_number)
 {
-	(void) head;
-	(void) line_number;
+	char n;
+
+	if (*head == NULL)
+	{
+		printf("L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (((*head)->n >= 97 && (*head)->n <= 122) ||
+	    ((*head)->n >= 65 && (*head)->n <= 90))
+	{
+		n = (*head)->n;
+		putchar(n);
+		putchar('\n');
+	}
+	else
+	{
+		printf("L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void pstr_op(stack_t **head, unsigned int line_number)
