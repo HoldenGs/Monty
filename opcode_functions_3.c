@@ -33,8 +33,21 @@ void mul_op(stack_t **head, unsigned int line_number)
  */
 void mod_op(stack_t **head, unsigned int line_number)
 {
-	(void) head;
-	(void) line_number;
+	stack_t *temp;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		printf("L%d: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILUR);
+	}
+	if ((*head)->n == 0)
+	{
+		printf("L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = *head;
+	temp->next->n = temp->next->n % temp->n;
+	pop_op(head, line_number);
 }
 
 void pchar_op(stack_t **head, unsigned int line_number)
