@@ -12,13 +12,13 @@ void add_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 
-	temp = *head;
-	if ((*head) != NULL && (*head)->next != NULL)
+
+	if (*head != NULL && (*head)->next != NULL)
 	{
-		while ((*head)->prev != NULL)
-			(*head) = (*head)->prev;
-		(*head) = (*head)->next;
+		temp = *head;
+		*head = (*head)->next;
 		(*head)->n = temp->n + (*head)->n;
+		(*head)->prev = NULL;
 		free(temp);
 	}
 	else
@@ -41,7 +41,6 @@ void nop_op(stack_t **head, unsigned int line_number)
 {
 	(void) head;
 	(void) line_number;
-	return;
 }
 /**
  * sub_op - subtract first two elements of doubly linked list
@@ -56,13 +55,13 @@ void sub_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 
-	temp = *head;
-	if ((*head) != NULL && (*head)->next != NULL)
+
+	if (*head != NULL && (*head)->next != NULL)
 	{
-		while ((*head)->prev != NULL)
-			(*head) = (*head)->prev;
-		(*head) = (*head)->next;
+		temp = *head;
+		*head = (*head)->next;
 		(*head)->n = (*head)->n - temp->n;
+		(*head)->prev = NULL;
 		free(temp);
 	}
 	else
