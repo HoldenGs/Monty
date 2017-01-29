@@ -38,7 +38,7 @@ void mod_op(stack_t **head, unsigned int line_number)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		printf("L%d: can't mod, stack too short\n", line_number);
-		exit(EXIT_FAILUR);
+		exit(EXIT_FAILURE);
 	}
 	if ((*head)->n == 0)
 	{
