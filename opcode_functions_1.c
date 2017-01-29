@@ -5,7 +5,6 @@
  *
  * @head: list head
  * @n: integer data
- * @line_number: the line of access
  *
  * Return: 0
  */

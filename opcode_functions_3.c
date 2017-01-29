@@ -94,7 +94,7 @@ void pstr_op(stack_t **head, unsigned int line_number)
 	char n;
 	(void) line_number;
 
-	while (*head != NULL && (*head)-> n >= 0 && (*head)->n <= 127
+	while (*head != NULL && (*head)->n >= 0 && (*head)->n <= 127
 	       && (*head)->n != 0)
 	{
 		n = (*head)->n;

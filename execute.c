@@ -4,7 +4,8 @@
  * execute - execute the opcode's corresponding function
  *
  * @code: bytecode to execute
- *
+ * @head: the list
+ * @line_number: line of access
  * @number: number to push if opcode is push
  *
  * Return: void
