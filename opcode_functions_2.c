@@ -94,6 +94,6 @@ void div_op(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *head;
-	temp->next->n /= temp->n;
+	temp->next->n = temp->next->n / temp->n;
 	pop_op(head, line_number);
 }
