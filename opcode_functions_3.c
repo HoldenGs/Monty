@@ -49,7 +49,15 @@ void mod_op(stack_t **head, unsigned int line_number)
 	temp->next->n = temp->next->n % temp->n;
 	pop_op(head, line_number);
 }
-
+/**
+ * pchar_op - prints the char at the top of stack followed by new line
+ *
+ * @head: the list
+ * @line_number: line of access
+ *
+ * Return: void
+ *
+ */
 void pchar_op(stack_t **head, unsigned int line_number)
 {
 	char n;
@@ -72,9 +80,26 @@ void pchar_op(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
-
+/**
+ * pstr_op - print string starting at top of stack followed by new line
+ *
+ * @head: the list
+ * @line_number: line of access
+ *
+ * Return: void
+ *
+ */
 void pstr_op(stack_t **head, unsigned int line_number)
 {
-	(void) head;
+	char n;
 	(void) line_number;
+
+	while (*head != NULL && (*head)-> n >= 0 && (*head)->n <= 127
+	       && (*head)->n != 0)
+	{
+		n = (*head)->n;
+		putchar(n);
+		(*head) = (*head)->next;
+	}
+	putchar('\n');
 }
