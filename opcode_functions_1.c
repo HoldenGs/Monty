@@ -91,16 +91,13 @@ void pop_op(stack_t **head, unsigned int line_number)
  * @line_number: line of access
  *
  * Return: void
- *
  */
 void swap_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp, *hold;
 	int holder;
 
-	while ((*head)->prev != NULL)
-		(*head) = (*head)->prev;
-	if ((*head)->prev != NULL || (*head) != NULL)
+	if (*head != NULL && (*head)->next != NULL)
 	{
 		temp = *head;
 		hold = temp->next;
