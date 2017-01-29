@@ -13,7 +13,7 @@ void add_op(stack_t **head, unsigned int line_number)
 	stack_t *temp;
 
 	temp = *head;
-	if ((*head) != NULL || (*head)->next != NULL)
+	if ((*head) != NULL && (*head)->next != NULL)
 	{
 		while ((*head)->prev != NULL)
 			(*head) = (*head)->prev;
@@ -57,7 +57,7 @@ void sub_op(stack_t **head, unsigned int line_number)
 	stack_t *temp;
 
 	temp = *head;
-	if ((*head) != NULL || (*head)->next != NULL)
+	if ((*head) != NULL && (*head)->next != NULL)
 	{
 		while ((*head)->prev != NULL)
 			(*head) = (*head)->prev;
