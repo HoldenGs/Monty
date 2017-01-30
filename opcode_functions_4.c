@@ -37,8 +37,21 @@ void rotl_op(stack_t **head, unsigned int line_number)
  */
 void rotr_op(stack_t **head, unsigned int line_number)
 {
-	(void) head;
-	(void) line_number;
+	stack_t *temp, *hold;
+
+	temp = *head;
+	if (temp == NULL)
+		return;
+	while (temp->next != NULL)
+		temp = temp->next;
+	hold = malloc(sizeof(stack_t));
+	if (hold == NULL)
+		return;
+	hold->n = temp->n;
+	hold->next = (*head);
+	hold->prev = NULL;
+	(*head) = hold;
+	free(temp);
 }
 /**
  * stack_op - sets the format of stack to LIFO
