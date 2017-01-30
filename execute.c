@@ -39,8 +39,8 @@ int execute(stack_t **head, unsigned int line_number, char *code, int number)
 	{
 		if (strcmp(code, opcodes[i].opcode) == 0)
 		{
-			err = opcodes[i].f(head, line_number);
-			return (err);
+			opcodes[i].f(head, line_number);
+			exit(EXIT_FAILURE);
 		}
 	}
 	printf("L%d: unknown instruction %s\n", line_number, code);
